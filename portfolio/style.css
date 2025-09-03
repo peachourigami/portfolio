@@ -1,0 +1,31 @@
+/* Reset CSS e variabili globali */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-sage: #899878;
+    --color-cream: #F7F7F2;
+    --color-dark: #423E37;
+    --color-blue: #89A6FB;
+    --color-text: #423E37;
+    --color-text-light: #6b6761;
+    --font-primary: 'Helvetica Neue', Arial, sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-bold: 600;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow: 0 8px 24px rgba(66, 62, 55, 0.15);
+    --polaroid-shadow: 0 4px 12px rgba(66, 62, 55, 0.2);
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--color-text);
+    background-color: var(--color-cream);
+    overflow-x: hidden;
+}
+
+/* ... TUTTO il resto del CSS che avevi nel codice originale ... */
