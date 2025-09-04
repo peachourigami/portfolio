@@ -183,7 +183,7 @@ body {
     transform: translate(-50%, -50%);
     font-size: 8rem;
     font-weight: var(--font-weight-light);
-    color: rgba(137, 152, 120, 0.08);
+    color: rgba(137, 152, 120, 0.18);
     z-index: 1;
     user-select: none;
     pointer-events: none;
