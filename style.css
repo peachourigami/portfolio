@@ -1,0 +1,401 @@
+/* Reset CSS e variabili globali */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-sage: #899878;
+    --color-cream: #F7F7F2;
+    --color-dark: #423E37;
+    --color-blue: #89A6FB;
+    --color-text: #423E37;
+    --color-text-light: #6b6761;
+    --font-primary: 'Inter', Arial, sans-serif;
+    --font-secondary: 'Playfair Display', serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-bold: 600;
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow: 0 8px 24px rgba(66, 62, 55, 0.15);
+    --polaroid-shadow: 0 4px 12px rgba(66, 62, 55, 0.2);
+}
+
+/* Body */
+body {
+    font-family: var(--font-primary);
+    color: var(--color-text);
+    background-color: var(--color-cream);
+    overflow-x: hidden;
+}
+
+/* LANDING PAGE */
+.landing-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
+    background-color: var(--color-cream);
+    position: relative;
+}
+
+/* Barra top landing */
+.landing-top-bar {
+    position: absolute;
+    top: 2rem;
+    left: 8%;
+    right: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.landing-links-left a,
+.landing-links-right a {
+    color: var(--color-dark);
+    font-weight: var(--font-weight-bold);
+    margin: 0 0.8rem;
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.landing-links-left a:hover,
+.landing-links-right a:hover {
+    color: var(--color-blue);
+}
+
+/* Contenuto landing */
+.landing-content {
+    flex: 1;
+    max-width: 500px;
+    z-index: 2;
+    animation: fadeInLeft 1.2s ease-out;
+}
+
+.landing-title {
+    font-family: var(--font-secondary);
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-light);
+    margin-bottom: 2rem;
+    color: var(--color-dark);
+    line-height: 1.1;
+}
+
+.landing-description {
+    font-size: 1.3rem;
+    color: var(--color-text-light);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    font-weight: var(--font-weight-regular);
+}
+
+.enter-portfolio-btn {
+    background: var(--color-sage);
+    color: var(--color-cream);
+    padding: 1.2rem 3.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.enter-portfolio-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: var(--transition);
+}
+
+.enter-portfolio-btn:hover::before {
+    left: 100%;
+}
+
+.enter-portfolio-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(137, 152, 120, 0.3);
+    background: var(--color-blue);
+}
+
+/* Profile image */
+.profile-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.profile-image {
+    width: 350px;
+    height: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* sfondo trasparente per PNG */
+}
+
+.profile-image img.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* mantiene proporzioni */
+    display: block;
+}
+
+/* Animazioni */
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* PORTFOLIO PRINCIPALE */
+.portfolio-page {
+    min-height: 100vh;
+    position: relative;
+    background-color: var(--color-cream);
+}
+
+/* Scritta PORTFOLIO dietro le tessere */
+.portfolio-background {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    font-weight: var(--font-weight-light);
+    color: rgba(137, 152, 120, 0.08);
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* Layout verticale per le card */
+/* Contenitore delle tessere: più in basso */
+.cards-container {
+    position: relative;
+    padding: 20rem 8%; /* aumenta il padding-top per far partire le tessere più in basso */
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Layout verticale con maggiore distanza tra le tessere */
+.project-card {
+    background: var(--color-cream);
+    border-radius: 4px;
+    box-shadow: var(--polaroid-shadow);
+    transition: var(--transition);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transform: rotate(-1deg);
+    min-height: 280px;
+    margin-bottom: 3rem; /* aumenta distanza tra le tessere */
+}
+
+.project-card:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.project-card:hover {
+    transform: rotate(0deg) scale(1.02) translateY(-6px);
+    box-shadow: 0 15px 35px rgba(66, 62, 55, 0.25);
+    z-index: 100;
+}
+
+.card-image {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.card-image img.project-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* riempie la card senza deformare */
+    transition: transform 0.4s ease;
+}
+
+.project-card:hover .card-image img.project-preview {
+    transform: scale(1.05); /* leggero effetto zoom al passaggio del mouse */
+}
+
+.card-content {
+    padding: 1.2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--color-cream);
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
+.card-description {
+    color: var(--color-text-light);
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.card-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.tech-tag {
+    background-color: rgba(137, 152, 120, 0.2);
+    color: var(--color-text);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    transition: var(--transition);
+}
+
+.tech-tag:hover {
+    background-color: var(--color-sage);
+    color: var(--color-cream);
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-sage);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+    transition: var(--transition);
+    align-self: flex-start;
+    font-size: 0.9rem;
+}
+
+.card-link:hover {
+    color: var(--color-blue);
+    transform: translateX(3px);
+}
+
+.card-link i {
+    transition: var(--transition);
+    font-size: 0.8rem;
+}
+
+.project-card:hover .card-link i {
+    transform: translateX(3px);
+}
+
+/* Tessere speciali */
+.about-card {
+    background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-blue) 100%);
+    color: var(--color-cream);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.about-card .profile-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.about-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.about-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.contact-section {
+    background: var(--color-sage);
+    color: white;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    margin-top: 3rem;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+
+.contact-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.contact-section a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.contact-section p {
+    margin: 0.5rem 0;
+}
+
+/* Bottone home fisso a destra */
+.back-to-landing {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-sage); /* palette verde */
+    color: var(--color-cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(66, 62, 55, 0.2);
+    transition: all 0.3s ease;
+    z-index: 9999; /* sempre sopra gli altri elementi */
+}
+
+.back-to-landing:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 28px rgba(66, 62, 55, 0.3);
+    background-color: var(--color-blue); /* leggero cambio colore al passaggio */
+}
+
